@@ -13,37 +13,17 @@
 
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0&icon_names=settings" />
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0&icon_names=arrow_back_2" />
-
-    <style>
-        .lang-switcher {
-            text-align:center;
-            margin:10px 0;
-        }
-        .lang-switcher button {
-            padding: 6px 12px;
-            border-radius: 6px;
-            margin: 2px;
-            border: none;
-            background: black;
-            color: white;
-            cursor: pointer;
-        }
-    </style>
-
 </head>
 
 <body>
 
 <!-- ================= LANGUAGE SWITCH ================= -->
-<div id="langSwitcher" class="lang-switcher">
-    <button onclick="switchLang('en')" id="btnLangEn">English</button>
-    <button onclick="switchLang('bn')" id="btnLangBn">বাংলা</button>
-</div>
 
 <span id="copyToast" class="toast" data-translate="copied"></span>
 
 
 <header class="hero shiny-gold">
+
     <div class="title-wrapper">
         <img src="../images/mb-icon.png" alt="Mondal Brothers Poultry Logo" class="logo">
 
@@ -63,7 +43,14 @@
 
             <h2 class="title-soft-bold" data-translate="rc_title"></h2>
 
+            <div id="langSwitcher" class="lang-pill-gold">
+                <span class="lang-opt" onclick="switchLang('en')" data-lang="en">EN</span>
+                <span class="divider">|</span>
+                <span class="lang-opt" onclick="switchLang('bn')" data-lang="bn">বা</span>
+            </div>
+
             <span class="material-symbols-outlined settings-btn" onclick="openSettings()">settings</span>
+
         </div>
     </div>
 </header>
