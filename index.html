@@ -22,23 +22,6 @@
     <link rel="stylesheet"
           href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
           crossorigin="anonymous" referrerpolicy="no-referrer" />
-
-    <style>
-        .lang-switcher {
-            text-align:center;
-            margin:10px 0;
-        }
-        .lang-switcher button {
-            padding: 6px 12px;
-            border-radius: 6px;
-            margin: 2px;
-            border: none;
-            background: black;
-            color: white;
-            cursor: pointer;
-        }
-    </style>
-
 </head>
 
 <body>
@@ -47,10 +30,12 @@
 
 <header class="hero shiny-gold">
 
-    <div id="langSwitcher" class="lang-switcher">
-        <button onclick="switchLang('en')" id="btnLangEn">English</button>
-        <button onclick="switchLang('bn')" id="btnLangBn">বাংলা</button>
+    <div id="langSwitcher" class="lang-pill-gold">
+        <span class="lang-opt" onclick="switchLang('en')">EN</span>
+        <span class="divider">|</span>
+        <span class="lang-opt" onclick="switchLang('bn')">বা</span>
     </div>
+
 
     <div class="logo-container">
         <img src="images/mb-icon.png" alt="Mondal Brothers Poultry Logo" class="logo">

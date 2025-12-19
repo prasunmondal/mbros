@@ -768,5 +768,45 @@ body {
     background: black;
     color: white;
     cursor: pointer;
+    font-size: 10px;
 }
 
+
+.lang-pill-gold {
+    display: inline-flex;
+    align-items: center;
+    padding: 3px 8px;
+    border-radius: 50px;
+    background: linear-gradient(145deg, #d4a029, #f8cc4e, #e9b42a);
+    color: #000;
+    font-weight:600;
+    font-size:13px;
+    margin: 6px auto;
+    cursor: default;
+    box-shadow: inset 0 1px 2px rgba(255,255,255,0.6),
+                inset 0 -1px 2px rgba(0,0,0,0.2),
+                0 0 3px rgba(0,0,0,0.3);
+    width: fit-content;
+}
+
+.lang-pill-gold .divider {
+    margin: 0 6px;
+    opacity: 0.5;
+}
+
+.lang-pill-gold .lang-opt {
+    cursor:pointer;
+    padding:0 4px;
+    transition: all .2s;
+    opacity:0.6;
+}
+
+.lang-pill-gold .lang-opt:hover {
+    opacity:1;
+    transform: translateY(-1px);
+}
+
+.lang-pill-gold .lang-opt.active {
+    opacity:1;
+    text-shadow: 0 0 1px rgba(0,0,0,0.6);
+}
