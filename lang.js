@@ -13,7 +13,7 @@ const translations = {
         order_title: "🧾 Order for Tomorrow",
         prebook_title: "🎉 Occasion Pre-Booking",
         contact_title: "📞 Contact Details",
-        share_title: "📢 Share Business Details",
+        share_title: "📢 Refer Customers",
 
         upi_title: "📲 UPI Payment",
 
