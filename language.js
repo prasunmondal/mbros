@@ -25,6 +25,13 @@ function updateWhatsAppText(lang){
 }
 
 window.onload = ()=>{
-    let lang = localStorage.getItem("siteLang") || "en";
-    switchLang(lang);
+    let saved = localStorage.getItem("siteLang");
+
+    if (!saved) {
+        // First time visitor → set bengali automatically
+        localStorage.setItem("siteLang", "bn");
+        switchLang("bn");
+    } else {
+        switchLang(saved);
+    }
 }
