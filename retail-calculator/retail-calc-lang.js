@@ -6,7 +6,7 @@ translations.en = {
     ...translations.en,
 
     rc_title: "Chicken Rate Calculator",
-    shop_name: "Enter Your Shop Name",
+    ask_shop_name: "Enter Your Shop Name",
     powered_by: "Powered by Mondal Brothers.",
 
     broiler: "Broiler",
@@ -62,7 +62,7 @@ translations.bn = {
     ...translations.bn,
 
     rc_title: "মুরগির রেট ক্যালকুলেটর",
-    shop_name: "আপনার দোকানের নাম লিখুন",
+    ask_shop_name: "আপনার দোকানের নাম লিখুন",
     powered_by: "মন্ডল ব্রাদার্স দ্বারা পরিচালিত।",
 
     broiler: "ব্রয়লার",
