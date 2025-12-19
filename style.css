@@ -752,3 +752,21 @@ body {
     font-size: 12px;
     padding: 12px;
 }
+
+
+
+.lang-switcher {
+    text-align:center;
+    margin:10px 0;
+}
+
+.lang-switcher button {
+    padding: 6px 12px;
+    border-radius: 6px;
+    margin: 2px;
+    border: none;
+    background: black;
+    color: white;
+    cursor: pointer;
+}
+

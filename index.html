@@ -1,246 +1,291 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Mondal Brothers Chicken Delivery Service</title>
-  <link rel="stylesheet" href="style.css" />
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Mondal Brothers Chicken Delivery Service</title>
+
+    <link rel="stylesheet" href="style.css" />
     <link rel="stylesheet" href="header-style.css" />
+
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@600;700&display=swap" rel="stylesheet">
     <link rel="manifest" href="manifest.json">
-  <meta name="theme-color" content="#f8b400">
-  <script>
-    if ("serviceWorker" in navigator) {
-      navigator.serviceWorker.register("service-worker.js");
-    }
-  </script>
+
+    <meta name="theme-color" content="#f8b400">
+
+    <script>
+        if ("serviceWorker" in navigator) {
+          navigator.serviceWorker.register("service-worker.js");
+        }
+    </script>
 
     <link rel="stylesheet"
           href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
           crossorigin="anonymous" referrerpolicy="no-referrer" />
 
+    <style>
+        .lang-switcher {
+            text-align:center;
+            margin:10px 0;
+        }
+        .lang-switcher button {
+            padding: 6px 12px;
+            border-radius: 6px;
+            margin: 2px;
+            border: none;
+            background: black;
+            color: white;
+            cursor: pointer;
+        }
+    </style>
+
 </head>
+
 <body>
 
-  <span id="copyToast" class="toast">Copied!</span>
+<span id="copyToast" class="toast">Copied!</span>
+
+<header class="hero shiny-gold">
+
+    <div id="langSwitcher" class="lang-switcher">
+        <button onclick="switchLang('en')" id="btnLangEn">English</button>
+        <button onclick="switchLang('bn')" id="btnLangBn">বাংলা</button>
+    </div>
+
+    <div class="logo-container">
+        <img src="images/mb-icon.png" alt="Mondal Brothers Poultry Logo" class="logo">
+    </div>
+
+    <h2 class="page-title contrast" data-translate="title_main"></h2>
+
+    <p data-translate="subtitle"></p>
+
+    <a href="tel:+919734075801" class="btn-call-rounded" data-translate="call_now"></a>
+
+    <br/>
+
+    <a href="https://wa.me/919734075801?text=default"
+       class="btn-whatsapp"
+       target="_blank"
+       data-translate="signup"></a>
+
+</header>
+
+<main>
+    <section class="accordion">
+
+        <!-- Retail calculator -->
+<!--        <a class="retail-calculator-accordion accordion-header highlight-link"-->
+<!--           href="retail-calculator/retail-calculator.html"-->
+<!--           data-translate="retail_calculator"></a>-->
+
+        <a class="retail-calculator-accordion accordion-header highlight-link"
+           href="retail-calculator/retail-calculator.html">
+
+            <span data-translate="retail_calculator"></span>
+
+            <span class="badge" data-translate="new_badge"></span>
+
+        </a>
 
 
-  <header class="hero shiny-gold">
-      <div class="logo-container">
-          <img src="images/mb-icon.png" alt="Mondal Brothers Poultry Logo" class="logo">
-      </div>
-      <h2 class="page-title contrast">Mondal Brothers Chicken Delivery</h2>
-    <p>Exclusive for Shops | Premium Quality | Modern Accounting with Daily SMS</p>
-    <a href="tel:+919734075801" class="btn-call-rounded">📞 Call Now</a>
-      <br/>
-      <a href="https://wa.me/919734075801?text=Hello,+I+would+like+to+register+as+a+new+customer+with+Mondal+Brothers."
-         class="btn-whatsapp" target="_blank">
-          Want to Sign Up? Click to WhatsApp Us!
-      </a>
+        <!-- PAYMENT -->
+        <button class="accordion-header" data-translate="payment_opt"></button>
+        <div class="accordion-content">
+            <p class="title-text" data-translate="choose_payment"></p>
 
-  </header>
+            <!-- UPI Payment Card -->
+            <div class="card">
+                <h3 class="section-title" data-translate="upi_title"></h3>
 
-  <main>
-      <section class="accordion">
+                <div class="qr-wrapper">
+                    <p class="text-center bold" data-translate="scan_pay"></p>
 
-          <!-- ================= RETAIL-CALCULATOR ================= -->
-          <a class="retail-calculator-accordion accordion-header highlight-link"
-             href="retail-calculator/retail-calculator.html">
-              🎉 Retail Calculator <span class="badge">NEW</span>
-          </a>
+                    <img src="images/payment-qr.jpeg" alt="Payment QR" class="qr-code" />
 
+                    <input type="number" id="amt" class="amount-input" placeholder="" data-translate-placeholder="enter_amt" />
 
-          <!-- ================= PAYMENT SECTION ================= -->
-          <button class="accordion-header">💰 Payment Options</button>
-          <div class="accordion-content">
-              <p class="title-text">Choose any payment method below</p>
+                    <button class="upi-pay-btn" onclick="payViaUpiSmart()" data-translate="pay_now"></button>
+                </div>
 
-              <!-- UPI CARD -->
-              <div class="card">
-                  <h3 class="section-title">📲 UPI Payment</h3>
+                <ul class="details-list">
 
-                  <div class="qr-wrapper">
-                      <p class="text-center bold">Scan & Pay</p>
-                      <img src="images/payment-qr.jpeg" alt="Payment QR" class="qr-code" />
+                    <li class="details-label" data-translate="primary_upi"></li>
 
-                      <input type="number" id="amt" class="amount-input" placeholder="Enter Amount (Optional)" />
-<!--                      <button class="primary-btn" onclick="openUPILink()">Pay via UPI App</button>-->
-                      <button class="upi-pay-btn" onclick="payViaUpiSmart()">Pay Now</button>
-                  </div>
+                    <li class="details-row lowlight">
+                        <span class="label" data-translate="name_label"></span>
+                        <span class="value">Prasun Mondal</span>
+                    </li>
 
-                  <ul class="details-list">
+                    <li class="details-row">
+                        <span class="label" data-translate="number_label"></span>
+                        <span id="upiNumber" class="value copyable">9679004046</span>
+                        <i class="fa-solid fa-copy copy-icon" onclick="copyToClipboard('upiNumber')"></i>
+                    </li>
 
-                      <li class="details-label">Primary UPI</li>
+                    <li class="details-row">
+                        <span class="label" data-translate="upi_id_label"></span>
+                        <span id="upiID" class="value copyable">prsnmondal@ybl</span>
+                        <i class="fa-solid fa-copy copy-icon" onclick="copyToClipboard('upiID')"></i>
+                    </li>
 
-                      <li class="details-row lowlight">
-                          <span class="label">Name</span>
-                          <span class="value">Prasun Mondal</span>
-                          <i class="copy-icon"></i>
-                      </li>
+                    <li class="details-label" data-translate="alt_upi"></li>
 
-                      <li class="details-row">
-                          <span class="label">Number</span>
-                          <span id="upiNumber" class="value copyable">9679004046</span>
-                          <i class="fa-solid fa-copy copy-icon" onclick="copyToClipboard('upiNumber')"></i>
-                      </li>
+                    <li class="details-row lowlight">
+                        <span class="label" data-translate="name_label"></span>
+                        <span class="value">Mondal Brothers</span>
+                    </li>
 
-                      <li class="details-row">
-                          <span class="label">UPI ID</span>
-                          <span id="upiID" class="value copyable">prsnmondal@ybl</span>
-                          <i class="fa-solid fa-copy copy-icon" onclick="copyToClipboard('upiID')"></i>
-                      </li>
+                    <li class="details-row">
+                        <span class="label" data-translate="upi_id_label"></span>
+                        <span id="altUPIID" class="value copyable">mondalbrothers@upi</span>
+                        <i class="fa-solid fa-copy copy-icon" onclick="copyToClipboard('altUPIID')"></i>
+                    </li>
 
-                      <li class="details-label">Alternate UPI</li>
+                </ul>
+            </div>
 
-                      <li class="details-row lowlight">
-                          <span class="label">Name</span>
-                          <span class="value">Mondal Brothers</span>
-                          <i class="copy-icon"></i>
-                      </li>
+            <!-- Bank transfer card -->
+            <div class="card">
+                <h3 class="section-title" data-translate="bank_title"></h3>
 
-                      <li class="details-row">
-                          <span class="label">UPI ID</span>
-                          <span id="altUPIID" class="value copyable">mondalbrothers@upi</span>
-                          <i class="fa-solid fa-copy copy-icon" onclick="copyToClipboard('altUPIID')"></i>
-                      </li>
+                <ul class="details-list">
 
-                  </ul>
-              </div>
+                    <li class="details-row lowlight">
+                        <span class="label" data-translate="bank_name"></span>
+                        <span id="bankName" class="value">Canara Bank</span>
+                    </li>
 
+                    <li class="details-row lowlight">
+                        <span class="label" data-translate="acc_type"></span>
+                        <span class="value">Current Account</span>
+                    </li>
 
-              <!-- BANK CARD -->
-              <div class="card">
-                  <h3 class="section-title">🏦 Bank Transfer Details</h3>
-                  <ul class="details-list">
+                    <li class="details-row">
+                        <span class="label" data-translate="acc_holder"></span>
+                        <span id="accHolder" class="value copyable">Mondal Brothers</span>
+                        <i class="fa-solid fa-copy copy-icon" onclick="copyToClipboard('accHolder')"></i>
+                    </li>
 
-                      <li class="details-row lowlight">
-                          <span class="label">Bank Name</span>
-                          <span id="bankName" class="value">Canara Bank</span>
-                          <i class="copy-icon"></i>
-                      </li>
+                    <li class="details-row">
+                        <span class="label" data-translate="acc_no"></span>
+                        <span id="accNo" class="value copyable">4400201000088</span>
+                        <i class="fa-solid fa-copy copy-icon" onclick="copyToClipboard('accNo')"></i>
+                    </li>
 
-                      <li class="details-row lowlight">
-                          <span class="label">Acc. Type</span>
-                          <span class="value">Current Account</span>
-                          <i class="copy-icon"></i>
-                      </li>
+                    <li class="details-row">
+                        <span class="label" data-translate="ifsc"></span>
+                        <span id="ifsc" class="value copyable">CNRB0000000</span>
+                        <i class="fa-solid fa-copy copy-icon" onclick="copyToClipboard('ifsc')"></i>
+                    </li>
 
-                      <li class="details-row">
-                          <span class="label">Acc. Name</span>
-                          <span id="accHolder" class="value copyable">Mondal Brothers</span>
-                          <i class="fa-solid fa-copy copy-icon" onclick="copyToClipboard('accHolder')"></i>
-                      </li>
+                </ul>
+            </div>
 
-                      <li class="details-row">
-                          <span class="label">Acc. Number</span>
-                          <span id="accNo" class="value copyable">4400201000088</span>
-                          <i class="fa-solid fa-copy copy-icon" onclick="copyToClipboard('accNo')"></i>
-                      </li>
+        </div>
 
-                      <li class="details-row">
-                          <span class="label">IFSC Code</span>
-                          <span id="ifsc" class="value copyable">CNRB0000000</span>
-                          <i class="fa-solid fa-copy copy-icon" onclick="copyToClipboard('ifsc')"></i>
-                      </li>
+        <!-- Order Tomorrow -->
+        <button class="accordion-header" data-translate="order_title"></button>
+        <div class="accordion-content">
+            <form id="orderForm" class="form-card">
 
-                  </ul>
-              </div>
-          </div>
+                <input type="text" id="name"
+                       placeholder=""
+                       data-translate-placeholder="name_ph"
+                       required />
 
-          <!-- ================= QUICK ORDER FORM ================= -->
-          <button class="accordion-header">🧾 Order for Tomorrow</button>
-          <div class="accordion-content">
-              <form id="orderForm" class="form-card">
+                <div class="qty-row">
+                    <input type="number" id="kg" placeholder="" data-translate-placeholder="kg_ph" />
+                    <span class="or-text" data-translate="or"></span>
+                    <input type="number" id="pieces" placeholder="" data-translate-placeholder="pcs_ph" />
+                </div>
 
-                  <input type="text" id="name" placeholder="Your Name" required />
+                <button type="submit" class="primary-btn" data-translate="send_whatsapp"></button>
+            </form>
+        </div>
 
-                  <div class="qty-row">
-                      <input type="number" id="kg" placeholder="Kg" />
-                      <span class="or-text">OR</span>
-                      <input type="number" id="pieces" placeholder="Pieces" />
-                  </div>
+        <!-- Occasion -->
+        <button class="accordion-header" data-translate="prebook_title"></button>
+        <div class="accordion-content">
+            <div class="card">
 
-                  <button type="submit" class="primary-btn">Send Order via WhatsApp</button>
-              </form>
-          </div>
+                <h3 class="section-title" data-translate="prebook_heading"></h3>
 
-          <!-- ================= PRE-BOOK ================= -->
-          <button class="accordion-header">🎉 Occasion Pre-Booking</button>
-          <div class="accordion-content">
-              <div class="card">
+                <p class="small-info" data-translate="prebook_desc"></p>
 
-                  <h3 class="section-title">📆 Pre-Register Upcoming Orders</h3>
-                  <p class="small-info">
-                      Add your occasion in advance — never forget later.
-                  </p>
+                <form id="occasionForm" class="prebook-form">
 
-                  <form id="occasionForm" class="prebook-form">
+                    <input type="text"
+                           id="occName"
+                           placeholder=""
+                           data-translate-placeholder="name_ph"
+                           required />
 
-                      <input type="text" id="occName" placeholder="Your Name" required />
-                      <input type="text" id="occTitle" placeholder="Occasion Name"/>
-                      <input type="date" id="occDate" required />
-                      <input type="number" id="occQty" placeholder="Approx Quantity (Kg)" />
+                    <input type="text"
+                           id="occTitle"
+                           placeholder=""
+                           data-translate-placeholder="occ_ph"/>
 
-                      <button type="button" class="primary-btn" onclick="sendOccasionBooking()">
-                          📲 Submit Pre-Booking via WhatsApp
-                      </button>
+                    <input type="date" id="occDate" required />
+                    <input type="number" id="occQty" placeholder="" data-translate-placeholder="qty_ph"/>
 
-                  </form>
-              </div>
-          </div>
+                    <button type="button" class="primary-btn"
+                            onclick="sendOccasionBooking()"
+                            data-translate="submit_prebook"></button>
 
-          <!-- ================= CONTACT ================= -->
-          <button class="accordion-header">📞 Contact Details</button>
-          <div class="accordion-content">
-              <p class="text-center bold">Pranab Mondal</p>
-              <p class="text-center"><a href="tel:+919734075801">📞 9734 075 801</a></p>
-          </div>
+                </form>
+            </div>
+        </div>
 
-          <!-- ================= REFER ================= -->
-          <button class="accordion-header">📢 Share Business Details</button>
-          <div class="accordion-content share-grid">
+        <!-- Contact -->
+        <button class="accordion-header" data-translate="contact_title"></button>
+        <div class="accordion-content">
+            <p class="text-center bold">Pranab Mondal</p>
+            <p class="text-center">
+                <a href="tel:+919734075801" data-translate="call"></a>
+            </p>
+        </div>
 
-              <!-- Left: English Buttons -->
-              <div class="share-column">
-                  <button class="other-share-btn" onclick="shareViaNativeEnglish()">
-                      <i class="fa-regular fa-share-from-square"></i>
-                      Share
-                  </button>
+        <!-- Share -->
+        <button class="accordion-header" data-translate="share_title"></button>
+        <div class="accordion-content share-grid">
 
-                  <button class="share-btn whatsapp-share-btn" onclick="shareOnWhatsAppEnglish()">
-                      <i class="fa-brands fa-whatsapp"></i> Share on WhatsApp
-                  </button>
-              </div>
+            <div class="share-column">
+                <button class="other-share-btn" onclick="shareViaNativeEnglish()" data-translate="share_btn"></button>
 
-              <!-- Right: Bengali Buttons -->
-              <div class="share-column">
-                  <button class="other-share-btn" onclick="shareViaNativeBengali()">
-                      <i class="fa-regular fa-share-from-square"></i>
-                      শেয়ার করুন
-                  </button>
+                <button class="share-btn whatsapp-share-btn"
+                        onclick="shareOnWhatsAppEnglish()"
+                        data-translate="share_wa"></button>
+            </div>
 
-                  <button class="share-btn whatsapp-share-btn" onclick="shareOnWhatsAppBengali()">
-                      <i class="fa-brands fa-whatsapp"></i> WhatsApp এ শেয়ার করুন
-                  </button>
-              </div>
+            <div class="share-column">
+                <button class="other-share-btn" onclick="shareViaNativeBengali()" data-translate="bn_share_btn"></button>
 
-          </div>
+                <button class="share-btn whatsapp-share-btn"
+                        onclick="shareOnWhatsAppBengali()"
+                        data-translate="bn_share_wa"></button>
+            </div>
 
+        </div>
 
-      </section>
-  </main>
+    </section>
+</main>
 
+<button id="installBtn" class="install-btn" onclick="installPwa()" style="display:none;"
+        data-translate="install_btn"></button>
 
-  <button id="installBtn" class="install-btn" onclick="installPwa()" style="display:none;">📲 Install App</button>
-  <div id="toast" class="toast">App installed successfully! 🎉</div>
+<div id="toast" class="toast" data-translate="toast_success"></div>
 
-  <script src="script.js"></script>
-  <script src="local-name-storage.js"></script>
-  <script src="log-worker.js"></script>
-  <script src="pwa-installation.js"></script>
+<footer data-translate="footer"></footer>
 
-  <footer>
-      © 2025 Mondal Brothers | Built with ❤️ in India
-  </footer>
+<script src="script.js"></script>
+<script src="local-name-storage.js"></script>
+<script src="log-worker.js"></script>
+<script src="pwa-installation.js"></script>
+
+<!-- NEW LANGUAGE SCRIPTS -->
+<script src="lang.js"></script>
+<script src="language.js"></script>
+
 </body>
 </html>
