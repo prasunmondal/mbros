@@ -1423,7 +1423,7 @@ footer {
 
 .lang-pill-gold .lang-opt {
     cursor:pointer;
-    padding:0 4px;
+    padding:0 2px;
     transition: all .2s;
     opacity:0.6;
 }

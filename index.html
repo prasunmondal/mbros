@@ -30,18 +30,21 @@
 
 <header class="hero shiny-gold">
 
-    <div id="langSwitcher" class="lang-pill-gold">
-        <span class="lang-opt" onclick="switchLang('en')">EN</span>
-        <span class="divider">|</span>
-        <span class="lang-opt" onclick="switchLang('bn')">বা</span>
-    </div>
-
-
     <div class="logo-container">
         <img src="images/mb-icon.png" alt="Mondal Brothers Poultry Logo" class="logo">
     </div>
 
-    <h2 class="page-title contrast" data-translate="title_main"></h2>
+    <div class="title-row-home">
+
+        <h2 class="page-title contrast" data-translate="title_main"></h2>
+
+        <div id="langSwitcher" class="lang-pill-gold">
+            <span class="lang-opt" onclick="switchLang('en')" data-lang="en">EN</span>
+            <span class="divider">|</span>
+            <span class="lang-opt" onclick="switchLang('bn')" data-lang="bn">বা</span>
+        </div>
+
+    </div>
 
     <p data-translate="subtitle"></p>
 
@@ -55,6 +58,7 @@
        data-translate="signup"></a>
 
 </header>
+
 
 <main>
     <section class="accordion">

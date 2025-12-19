@@ -796,7 +796,7 @@ body {
 
 .lang-pill-gold .lang-opt {
     cursor:pointer;
-    padding:0 4px;
+    padding:0 2px;
     transition: all .2s;
     opacity:0.6;
 }
@@ -809,4 +809,25 @@ body {
 .lang-pill-gold .lang-opt.active {
     opacity:1;
     text-shadow: 0 0 1px rgba(0,0,0,0.6);
+}
+
+.title-row-home {
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  gap:10px;
+  margin-top:6px;
+  margin-bottom:6px;
+  text-align:center;
+}
+
+.title-row-home h2 {
+  margin:0;
+  padding:0;
+}
+
+@media(max-width:450px){
+  .title-row-home {
+     flex-wrap:wrap;
+  }
 }
