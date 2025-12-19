@@ -24,14 +24,15 @@ function updateWhatsAppText(lang){
         "https://wa.me/919734075801?text=I want to register as a new shop"
 }
 
-window.onload = ()=>{
+document.addEventListener("DOMContentLoaded", () => {
+
     let saved = localStorage.getItem("siteLang");
 
     if (!saved) {
-        // First time visitor → set bengali automatically
+        // Default first-time language = Bengali
+        saved = "bn";
         localStorage.setItem("siteLang", "bn");
-        switchLang("bn");
-    } else {
-        switchLang(saved);
     }
-}
+
+    switchLang(saved);
+});
