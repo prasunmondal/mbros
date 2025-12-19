@@ -19,7 +19,7 @@ const translations = {
 
         name_ph: "Your Name",
 
-        footer: "© 2025 Mondal Brothers | Built with ❤️ in India",
+        footer: "© 2026 Mondal Brothers | Built with ❤️ in India",
 
         new_badge: "New"
     },
@@ -44,7 +44,7 @@ const translations = {
 
         name_ph: "আপনার নাম",
 
-        footer: "© ২০২৫ মন্ডল ব্রাদার্স | তৈরি হয়েছে ❤️ দিয়ে",
+        footer: "© 2026 Mondal Brothers | Built with ❤️ in India",
 
         new_badge: "New Bengla"
     }
@@ -85,7 +85,7 @@ translations.en = {
     full_report: "Full Report",
     daily_summary: "Daily Summary",
 
-    footer: "© 2025 Mondal Brothers | Built with ❤️ in India",
+    footer: "© 2026 Mondal Brothers | Built with ❤️ in India",
 
     copied: "Copied!",
 
@@ -141,7 +141,7 @@ translations.bn = {
     full_report: "সম্পূর্ণ রিপোর্ট",
     daily_summary: "দৈনিক সারাংশ",
 
-    footer: "© ২০২৫ মন্ডল ব্রাদার্স | ❤️ দিয়ে তৈরি",
+    footer: "© 2026 Mondal Brothers | Built with ❤️ in India",
 
     copied: "কপি হয়েছে!",
 
