@@ -1,5 +1,6 @@
 function switchLang(lang){
     localStorage.setItem("siteLang", lang);
+    document.documentElement.lang = lang;
 
     document.querySelectorAll("[data-translate]").forEach(el => {
         let key = el.getAttribute("data-translate");
@@ -14,12 +15,14 @@ function switchLang(lang){
     updateWhatsAppText(lang);
 
     document.querySelectorAll(".lang-opt").forEach(el => {
-        el.style.opacity = el.dataset.lang === lang ? 1 : 0.5;
+        const active = el.dataset.lang === lang;
+        el.classList.toggle("active", active);
+        el.setAttribute("aria-pressed", active);
     });
 }
 
 function updateWhatsAppText(lang){
-    const btn = document.querySelector(".btn-whatsapp");
+    const btn = document.getElementById("signupLink");
     if (!btn) return; // Not present on every page
 
     btn.href =

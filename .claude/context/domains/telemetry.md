@@ -14,7 +14,7 @@ Gives the owners visibility into who uses the site and what they do (orders, sha
 { "timestamp": "2026-10-30 10:15", "name": "<customerName>", "shop": "<shop_name>",
   "location": "<city, region, country>", "coords": "<lat,lon>", "action": "<free text>" }
 ```
-Action strings are free text with prefixes by convention: `Clicked Header:`, `Clicked Order Online:`, `Prebooking:`, `Click: Refer …`, `RCalc: …`.
+Action strings are free text with prefixes by convention: `Clicked Section:`, `Clicked Order Online:`, `Prebooking:`, `Click: Refer …`, `RCalc: …`.
 
 Flush payload (POST, `no-cors`, to the Apps Script `/exec` URL in `sendData`):
 ```json

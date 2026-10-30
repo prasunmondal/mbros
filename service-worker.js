@@ -1,4 +1,4 @@
-const CACHE_NAME = "mb-poultry-cache-v5";
+const CACHE_NAME = "mb-poultry-cache-v6";
 const urlsToCache = [
   "./",
   "./index.html",

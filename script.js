@@ -1,16 +1,27 @@
 const whatsappNumber = "919734075801"
 
-const accordions = document.querySelectorAll(".accordion-header");
-accordions.forEach(btn => {
-  btn.addEventListener("click", () => {
+function trackSection(section) {
+  trackEvent(`Clicked Section: ${section}`);
+}
 
-    const content = btn.nextElementSibling;
-    content.classList.toggle("open");
-    if (content.classList.contains("open")) {
-          trackEvent(`Clicked Header: ${btn.textContent}`);
-    }
+// Order card tabs: "tomorrow" | "occasion"
+function showOrderTab(tab) {
+  document.querySelectorAll(".tab").forEach(btn => {
+    const active = btn.dataset.tab === tab;
+    btn.classList.toggle("active", active);
+    btn.setAttribute("aria-selected", active);
   });
-});
+  document.querySelectorAll(".tab-panel").forEach(panel => {
+    panel.hidden = panel.dataset.panel !== tab;
+  });
+}
+
+// Pre-booking only makes sense from tomorrow onwards
+const occDate = document.getElementById("occDate");
+if (occDate) {
+  const tomorrow = new Date(Date.now() + 24 * 60 * 60 * 1000);
+  occDate.min = tomorrow.toLocaleDateString("en-CA"); // YYYY-MM-DD, local time
+}
 
 
 document.getElementById("orderForm").addEventListener("submit", (e) => {
@@ -22,6 +33,10 @@ document.getElementById("orderForm").addEventListener("submit", (e) => {
   const kg = document.getElementById("kg").value.trim();
   const product = document.getElementById("product")?.value.trim() || ""; // optional
 
+  const qtyError = document.getElementById("qtyError");
+  qtyError.hidden = Boolean(kg || pieces);
+  if (!kg && !pieces) return;
+
   // Build quantity text dynamically
   let qtyText = "";
   if (pieces) qtyText = `${pieces} pieces`;
@@ -29,7 +44,7 @@ document.getElementById("orderForm").addEventListener("submit", (e) => {
   if (pieces && kg) qtyText = `${pieces} pieces and ${kg} kg`;
 
   const message =
-    `Hello, I am ${name}.` +
+    `Hello, I am ${name}. ` +
     `I want to order ${qtyText}${product ? " of " + product : ""}.`;
     trackEvent(`Clicked Order Online: ${message}`)
 
@@ -229,17 +244,3 @@ if ("serviceWorker" in navigator) {
    window.location.reload();
  });
 }
-
-
-document.querySelectorAll(".accordion-header").forEach(header => {
-  header.addEventListener("click", function () {
-
-    if (this.tagName === "A") return;
-
-    setTimeout(() => {
-      const yOffset = -20; // tweak if needed
-      const y = this.getBoundingClientRect().top + window.pageYOffset + yOffset;
-      window.scrollTo({ top: y, behavior: "smooth" });
-    }, 150);
-  });
-});
