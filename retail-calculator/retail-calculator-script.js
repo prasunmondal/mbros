@@ -8,8 +8,7 @@ window.currentType = null;
         document.getElementById("rate").value = rate;
         window.currentType = type;
 
-        const readable = type.replace(/_/g, " ").replace(/\b\w/g, c => c.toUpperCase());
-        document.getElementById("selectedTypeLabel").textContent = readable;
+        setTypeLabel(type);
 
         recalcAfterRateUpdate();
         focusKg();
@@ -52,17 +51,17 @@ document.addEventListener("DOMContentLoaded", () => {
 });
 
 
+// Type keys (e.g. "broiler_live") double as translation keys, so the label follows language switches
+function setTypeLabel(type) {
+    const labelEl = document.getElementById("selectedTypeLabel");
+    if (!labelEl) return;
+    labelEl.dataset.translate = type;
+    labelEl.textContent = tr(type);
+}
+
 function updateSelectionUI(type) {
     window.currentType = type;
-    // Human-readable text
-    const readable = type
-        .replace(/_/g, " ")
-        .replace(/\b\w/g, c => c.toUpperCase());
-
-    const labelEl = document.getElementById("selectedTypeLabel");
-    if (labelEl) {
-        labelEl.textContent = readable;
-    }
+    setTypeLabel(type);
 
     // Highlight active button
     document.querySelectorAll(".choice-btn").forEach(btn => {
@@ -214,7 +213,8 @@ document.addEventListener("DOMContentLoaded", () => {
                 if (!savedRate || savedRate.trim() === "" || Number(savedRate) === 0) {
                     btn.style.display = "none";      // hide if not set
                 } else {
-                    btn.style.display = "block";     // show if set
+                    btn.style.display = "";          // show if set (layout from CSS)
+                    btn.querySelector(".tile-rate").textContent = `₹${savedRate}/kg`;
                 }
             });
         });
@@ -247,9 +247,9 @@ function checkRatesAndToggleCalcCard() {
 
     if (!hasRate) {
         card.style.display = "none";
-        msg.style.display = "block";
+        msg.style.display = "flex";
     } else {
-        card.style.display = "block";
+        card.style.display = "";         // layout from CSS
         msg.style.display = "none";
     }
 }

@@ -30,7 +30,7 @@ SEO: meta description, Open Graph tags, `LocalBusiness` JSON-LD in `<head>`. Fon
 - UPI payee in `payViaUpiSmart` must match the displayed primary UPI details.
 - Name fields `#name`, `#occName` sync via `customerName` key.
 - Tracked actions: `Clicked Section: <order|prebook|payment>` (`trackSection`), order/pre-book/share events (see `telemetry.md`).
-- Design tokens are CSS variables at the top of `style.css`; `style.css` is used only by this page.
+- Design tokens are CSS variables at the top of `style.css`. `style.css` is shared with the retail calculator page (which adds `retail-calculator.css`), so check both pages when changing shared classes (`.topbar`, `.btn*`, `.card`, `.footer`, form inputs).
 
 ## Related
 `business.md`, `telemetry.md`, ADR-002

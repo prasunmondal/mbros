@@ -204,7 +204,7 @@ const translations = {
 translations.en = {
     ...translations.en,
 
-    rc_title: "Chicken Rate Calculator",
+    rc_title: "Rate Calculator",
     ask_shop_name: "Enter Your Shop Name",
     powered_by: "Powered by Mondal Brothers.",
 
@@ -225,7 +225,7 @@ translations.en = {
 
     view_sales_report: "View Sales Report",
 
-    download_reports: "📥 Download Reports",
+    download_reports: "Download reports",
     full_report: "Full Report",
     daily_summary: "Daily Summary",
 
@@ -254,6 +254,24 @@ translations.en = {
     report_title: "Day Summary Report",
 
     shopname_required: "Please enter your shop name first.",
+    /* REDESIGN (2026-10) */
+    rc_subtitle: "Chicken rates for your shop",
+    choose_type: "Choose product",
+    rate_per_kg: "Rate (₹/kg)",
+    set_rates_hint: "Set your rates once to start calculating.",
+    open_settings: "Set rates",
+    save_sale: "Save sale",
+    clear: "Clear",
+    hide_sales_report: "Hide Sales Report",
+    sales_title: "Sales",
+    date: "Date",
+    no_sales: "No sales recorded yet.",
+    no_transactions: "No transactions found.",
+    edit: "Edit",
+    delete: "Delete",
+    add: "Add",
+    rate_not_set: "Not set",
+    rc_footer: "© 2026 Mondal Brothers. Your data stays on this device.",
 };
 
 
@@ -281,7 +299,7 @@ translations.bn = {
 
     view_sales_report: "বিক্রির রিপোর্ট দেখুন",
 
-    download_reports: "📥 রিপোর্ট ডাউনলোড করুন",
+    download_reports: "রিপোর্ট ডাউনলোড করুন",
     full_report: "সম্পূর্ণ রিপোর্ট",
     daily_summary: "দৈনিক সারাংশ",
 
@@ -310,5 +328,23 @@ translations.bn = {
     report_title: "দিনের সারাংশ রিপোর্ট",
 
     shopname_required: "দয়া করে প্রথমে দোকানের নাম লিখুন।",
+    /* REDESIGN (2026-10) */
+    rc_subtitle: "আপনার দোকানের কাউন্টারের জন্য",
+    choose_type: "প্রোডাক্ট বেছে নিন",
+    rate_per_kg: "রেট (₹/কেজি)",
+    set_rates_hint: "হিসাব শুরু করতে একবার রেট সেট করুন।",
+    open_settings: "রেট সেট করুন",
+    save_sale: "বিক্রি সেভ করুন",
+    clear: "মুছুন",
+    hide_sales_report: "বিক্রির রিপোর্ট লুকান",
+    sales_title: "বিক্রি",
+    date: "তারিখ",
+    no_sales: "এখনও কোনো বিক্রি নেই।",
+    no_transactions: "কোনো ট্রানজ্যাকশন নেই।",
+    edit: "এডিট",
+    delete: "ডিলিট",
+    add: "যোগ করুন",
+    rate_not_set: "সেট করা নেই",
+    rc_footer: "© ২০২৬ মন্ডল ব্রাদার্স। আপনার ডেটা শুধু এই ডিভাইসেই থাকে।",
 };
 

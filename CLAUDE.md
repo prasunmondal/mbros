@@ -33,9 +33,10 @@ Deploy: pushing `main` publishes via GitHub Pages (mechanism unverified — see 
 
 | Path | Owns |
 |---|---|
-| `index.html`, `script.js`, `style.css`, `header-style*.css` | Storefront page |
-| `retail-calculator/` | Retail calculator page (`retail-calculator-script.js` = calc/rates/PDF, `sales-report.js` = sales log/report) |
-| `lang.js` (dictionaries) + `language.js` (`switchLang`) | i18n, shared by both pages |
+| `index.html`, `script.js` | Storefront page |
+| `style.css` | Shared design system (tokens, top bar, buttons, cards, footer) for both pages + home-page sections |
+| `retail-calculator/` | Retail calculator page (`retail-calculator-script.js` = calc/rates/PDF, `sales-report.js` = sales log/report, `retail-calculator.css` on top of shared `../style.css`) |
+| `lang.js` (dictionaries) + `language.js` (`switchLang`, `tr(key)` for JS-built strings) | i18n, shared by both pages |
 | `log-worker.js` | Telemetry queue → Google Apps Script → Sheet |
 | `local-name-storage.js` | Syncs customer name across form fields |
 | `service-worker.js`, `pwa-installation.js`, `manifest.json` | PWA / offline |

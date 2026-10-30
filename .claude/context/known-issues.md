@@ -18,6 +18,9 @@ Keep entries short. Mark `FIXED (date)` rather than deleting for one cycle, then
 | 6 | Duplicate `downloadPdf` stub removed. `downloadCsv` is still an unused stub that only logs. | `retail-calculator-script.js` | PARTIAL |
 | 8 | ~30 home-page labels rendered "undefined" (keys never added to `lang.js`). Fixed by redesign; all keys present in en + bn. | `lang.js` | FIXED 2026-10-30 |
 | 7 | Orphan `retail-calc-lang.js` (outdated copy of `lang.js` keys) deleted. | `retail-calculator/` | FIXED 2026-10-30 |
+| 9 | Settings and transactions dialogs were missing from the calculator HTML since `cd9b1c0` (2025-12-19): ⚙ threw, new users could not set rates. Restored in redesign. | `retail-calculator.html` | FIXED 2026-10-30 |
+| 10 | Product tiles lacked `data-type`, so the selected tile was never highlighted; selection label was reset to "None" by `switchLang` on load. | `retail-calculator.html`, `retail-calculator-script.js` | FIXED 2026-10-30 |
+| 11 | Editing the rate on the calculator card is not saved: `autoCalc` saves only when global `selectedType` is set, but nothing sets it (code uses `window.currentType`). Rates persist only via Settings. | `retail-calculator-script.js` `autoCalc` | OPEN |
 
 ## Data inconsistencies
 - Daily report groups by `recordTimestamp` date, but transaction modal and `deleteEntireDate` filter by `saleTimestamp` date. Back-dated entries added via modal can appear under a different day than expected.
@@ -27,9 +30,8 @@ Keep entries short. Mark `FIXED (date)` rather than deleting for one cycle, then
 - Current deployment mechanism (see `architecture.md#deployment`).
 
 ## Technical debt
-- `header-style.css` and `header-style2.css` are no longer linked by any page (`header-style.css` is still precached by the SW). Remove once the calculator page redesign is settled.
-- Retail calculator page still uses the old visual style; not yet aligned with the redesigned home page.
-- No tests, linter, or README.
-- Strings built in JS (WhatsApp messages, alerts, report/PDF) are English-only.
+- `header-style.css`, `header-style2.css` and `images/right-icon.png` are no longer used by any page (`header-style.css` is still precached by the SW). Safe to delete.
+- No tests or linter.
+- Strings built in JS (WhatsApp messages, alerts/prompts, PDF) are English-only.
 - Product types hardcoded in several places (settings modal, `rateKeys`, `preferredOrder`, `checkRatesAndToggleCalcCard`).
 - Commented-out code blocks (`openUPILink`, old window.onload).

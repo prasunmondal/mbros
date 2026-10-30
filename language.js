@@ -1,3 +1,9 @@
+// Translate a key in the current language, for strings built in JS
+function tr(key){
+    const lang = localStorage.getItem("siteLang") || "bn";
+    return translations[lang]?.[key] ?? key;
+}
+
 function switchLang(lang){
     localStorage.setItem("siteLang", lang);
     document.documentElement.lang = lang;

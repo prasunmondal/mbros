@@ -49,30 +49,36 @@ function getDailySalesReport() {
 
 document.getElementById("reportBox").style.display = "none";
 
-function toggleReport() {
+// Keep data-translate in sync so a language switch shows the right label
+function setReportToggleLabel(key) {
     const btn = document.getElementById("reportToggleBtn");
+    if (!btn) return;
+    btn.dataset.translate = key;
+    btn.textContent = tr(key);
+}
+
+function toggleReport() {
     const box = document.getElementById("reportBox");
 
     // If hidden → show
     if (box.style.display === "none" || box.innerHTML.trim() === "") {
         showReport();
         box.style.display = "block";
-        btn.textContent = "Hide Sales Report";
+        setReportToggleLabel("hide_sales_report");
     }
     else {
         // If visible → hide
         box.style.display = "none";
-        btn.textContent = "View Sales Report";
+        setReportToggleLabel("view_sales_report");
     }
 }
 
 function hideReportIfOpen() {
     const box = document.getElementById("reportBox");
-    const btn = document.getElementById("reportToggleBtn");
 
     if (box && box.style.display === "block") {
         box.style.display = "none";
-        if (btn) btn.textContent = "View Sales Report";
+        setReportToggleLabel("view_sales_report");
     }
 }
 
@@ -82,7 +88,7 @@ function showReport() {
 
     if (types.length === 0) {
         document.getElementById("reportBox").innerHTML = `
-            <div class="no-data">No sales recorded.</div>
+            <div class="no-data">${tr("no_sales")}</div>
         `;
         return;
     }
@@ -92,7 +98,7 @@ function showReport() {
             <table class="styled-table">
                 <thead>
                     <tr>
-                        <th>Date</th>
+                        <th>${tr("date")}</th>
     `;
 
     const orderedTypes = [
@@ -101,8 +107,7 @@ function showReport() {
     ];
 
     orderedTypes.forEach(type => {
-        html += `<th>${formatTypeName(type)
-        }</th>`;
+        html += `<th>${tr(type)}</th>`;
     });
 
     html += `
@@ -113,11 +118,11 @@ function showReport() {
 
     Object.keys(summary).sort().forEach(date => {
         html += `<tr>
-                    <td>${date} <button class="delete-date-btn" onclick="deleteEntireDate('${date}')">🗑️</button></td>
+                    <td class="date-cell">${date} <button class="delete-date-btn" onclick="deleteEntireDate('${date}')" aria-label="Delete day"><i class="fa-regular fa-trash-can"></i></button></td>
                 `;
 
         orderedTypes.forEach(type => {
-            const value = summary[date][type] || 0;
+            const value = Number((summary[date][type] || 0).toFixed(3));
             html += `<td class="clickable-cell" onclick="showTransactions('${date}', '${type}')">${value}</td>`;
         });
 
@@ -153,13 +158,6 @@ function deleteEntireDate(date) {
     closeModal();
 }
 
-function formatTypeName(type) {
-    return type
-        .split("_")
-        .map(word => word.charAt(0).toUpperCase() + word.slice(1))
-        .join(" ");
-}
-
 
 // transaction per day and delete
 
@@ -179,12 +177,12 @@ function showTransactions(date, type) {
     );
 
     document.getElementById("modalTitle").innerText =
-        `${formatTypeName(type)} — ${date}`;
+        `${tr(type)} — ${date}`;
 
     let html = "";
 
     if (list.length === 0) {
-        html = "<p>No transactions found.</p>";
+        html = `<p class="no-data">${tr("no_transactions")}</p>`;
     } else {
         list.forEach(entry => {
             const saleTime = entry.saleTimestamp
@@ -202,9 +200,9 @@ function showTransactions(date, type) {
                     <br><small>Recorded: ${recordTime}</small>
                 </div>
 
-                <div style="display:flex; gap:6px;">
-                    <button class="edit-btn" onclick="editTransaction('${entry.recordTimestamp}', ${entry.kg}, ${entry.rate})">Edit</button>
-                    <button class="delete-btn" onclick="deleteTransaction('${entry.recordTimestamp}')">Delete</button>
+                <div class="transaction-actions">
+                    <button class="edit-btn" onclick="editTransaction('${entry.recordTimestamp}', ${entry.kg}, ${entry.rate})">${tr("edit")}</button>
+                    <button class="delete-btn" onclick="deleteTransaction('${entry.recordTimestamp}')">${tr("delete")}</button>
                 </div>
             </div>
             `;
