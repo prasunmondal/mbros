@@ -13,12 +13,16 @@ function switchLang(lang){
 
     updateWhatsAppText(lang);
 
-    document.querySelector("#btnLangEn").style.opacity = lang==="en"?1:0.5;
-    document.querySelector("#btnLangBn").style.opacity = lang==="bn"?1:0.5;
+    document.querySelectorAll(".lang-opt").forEach(el => {
+        el.style.opacity = el.dataset.lang === lang ? 1 : 0.5;
+    });
 }
 
 function updateWhatsAppText(lang){
-    document.querySelector(".btn-whatsapp").href =
+    const btn = document.querySelector(".btn-whatsapp");
+    if (!btn) return; // Not present on every page
+
+    btn.href =
         lang === "bn" ?
         "https://wa.me/919734075801?text=আমি নতুন দোকান হিসেবে রেজিস্টার করতে চাই" :
         "https://wa.me/919734075801?text=I want to register as a new shop"

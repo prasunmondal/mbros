@@ -2,8 +2,7 @@
    GLOBAL TRACKING CONSTANTS
 --------------------------- */
 const EVENT_KEY = "eventQueue";
-let userLocation = localStorage.getItem("user_location") || null;
-let coords = localStorage.getItem("coords") || null;
+const TRACKING_URL = "https://script.google.com/macros/s/AKfycbz4Ewsq6qbheE4v3Yan0LlvhMmTu3BLz9bwizUUWUwfWVB6yqh7YE7GThpiDOWOU0q_/exec";
 const userNameCacheKey = "customerName"
 const userShopNameCacheKey = "shop_name"
 
@@ -57,12 +56,10 @@ async function getCoordinates() {
 }
 
 async function initLocation() {
-    if (!coords) {
+    if (!localStorage.getItem("coords")) {
         const c = await getCoordinates();
-        coords = `${c.lat},${c.lon}`;
-        userLocation = `${c.city || ""}, ${c.region || ""}, ${c.country || ""}`.trim();
-        localStorage.setItem("coords", coords);
-        localStorage.setItem("user_location", userLocation);
+        localStorage.setItem("coords", `${c.lat},${c.lon}`);
+        localStorage.setItem("user_location", `${c.city || ""}, ${c.region || ""}, ${c.country || ""}`.trim());
     }
 }
 initLocation(); // start async silently
@@ -93,16 +90,6 @@ async function trackEvent(actionMsg) {
     console.log("🧾 Current queue:", queue);
 }
 
- async function initLocation() {
-     if (!localStorage.getItem("coords")) {
-         const c = await getCoordinates();
-         localStorage.setItem("coords", `${c.lat},${c.lon}`);
-         localStorage.setItem("user_location", `${c.city || ""}, ${c.region || ""}, ${c.country || ""}`.trim());
-     }
- }
- initLocation();
-
-
 /* --------------------------
    SEND DATA BATCH (ASYNC)
 --------------------------- */
@@ -129,15 +116,18 @@ async function trackEvent(actionMsg) {
 
     try {
         if (useBeacon && navigator.sendBeacon) {
-            navigator.sendBeacon(url, JSON.stringify(payload));
+            if (!navigator.sendBeacon(TRACKING_URL, JSON.stringify(payload))) {
+                throw new Error("Beacon not queued");
+            }
             console.log("📤 Beacon sent");
         } else {
-            sendData(payload)
-//            .then(r => r.json())
-//            .then(data => console.log(data));
+            await sendData(payload);
             console.log("📤 Fetch POST sent");
         }
-        localStorage.removeItem(EVENT_KEY);
+
+        // Remove only the events that were sent; new ones may have been queued meanwhile
+        const latest = JSON.parse(localStorage.getItem(EVENT_KEY) || "[]");
+        localStorage.setItem(EVENT_KEY, JSON.stringify(latest.slice(queue.length)));
         console.log("🧹 Queue cleared");
     } catch (e) {
         console.log("Send failed, will retry");
@@ -145,24 +135,14 @@ async function trackEvent(actionMsg) {
     }
  }
 
+// Throws on network failure. no-cors responses are opaque, so server errors can't be detected.
 async function sendData(payload) {
-    const url = "https://script.google.com/macros/s/AKfycbz4Ewsq6qbheE4v3Yan0LlvhMmTu3BLz9bwizUUWUwfWVB6yqh7YE7GThpiDOWOU0q_/exec";
-
-  try {
-    const res = await fetch(url, {
+    await fetch(TRACKING_URL, {
       method: "POST",
       mode:"no-cors",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify(payload)
     });
-
-    console.log("Response status:", res.status);
-    const data = await res.text();   // can't always parse json in dev
-    console.log("Response body:", data);
-
-  } catch (err) {
-    console.error("❌ sendData error:", err);
-  }
 }
 
 
@@ -170,7 +150,7 @@ async function sendData(payload) {
 /* --------------------------
    BACKGROUND SEND TRIGGERS
 --------------------------- */
-setInterval(() => flushEvents(), 1000/*5 * 60 * 1000*/);  // every 5 min async
+setInterval(() => flushEvents(), 5 * 60 * 1000);  // every 5 min async
 
 
 // on closing tab

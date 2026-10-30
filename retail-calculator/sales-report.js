@@ -249,7 +249,7 @@ function deleteTransaction(timeKey) {
     if (!confirm("Delete this record?")) return;
 
     let allSales = JSON.parse(localStorage.getItem("salesLog") || "[]");
-    allSales = allSales.filter(entry => entry.time !== timeKey);
+    allSales = allSales.filter(entry => entry.recordTimestamp !== timeKey);
 
     localStorage.setItem("salesLog", JSON.stringify(allSales));
 
@@ -326,15 +326,3 @@ function closeModal() {
     document.getElementById("transactionModal").style.display = "none";
 }
 
-function deleteTransaction(timeKey) {
-    let allSales = JSON.parse(localStorage.getItem("salesLog") || "[]");
-
-    // Remove matching entry
-    allSales = allSales.filter(entry => entry.time !== timeKey);
-
-    localStorage.setItem("salesLog", JSON.stringify(allSales));
-
-    // Refresh modal & table
-    closeModal();
-    showReport();
-}

@@ -263,14 +263,6 @@ function goHome() {
 
 
 
-function downloadPdf(type) {
-    if (type === "full") {
-        console.log("Download PDF - Full Data");
-    } else {
-        console.log("Download PDF - Daywise Data");
-    }
-}
-
 function downloadCsv(type) {
     if (type === "full") {
         console.log("Download CSV - Full Data");

@@ -1,7 +1,7 @@
 ---
 status: VERIFIED
 last_verified: 2026-10-30
-sources: [service-worker.js, language.js, log-worker.js, retail-calculator/retail-calculator.html, retail-calculator/retail-calculator-script.js, retail-calculator/sales-report.js, retail-calculator/retail-calc-lang.js, index.html]
+sources: [service-worker.js, language.js, log-worker.js, retail-calculator/retail-calculator.html, retail-calculator/retail-calculator-script.js, retail-calculator/sales-report.js, index.html]
 ---
 # Known issues & technical debt
 
@@ -10,13 +10,13 @@ Keep entries short. Mark `FIXED (date)` rather than deleting for one cycle, then
 ## Open bugs
 | # | Issue | Where | Status |
 |---|---|---|---|
-| 1 | Missing comma in `urlsToCache` → SW syntax error, offline/PWA install broken. `lang.js`, `language.js`, `header-style2.css` not precached. | `service-worker.js` | OPEN |
-| 2 | `switchLang` queries non-existent `#btnLangEn/#btnLangBn` → TypeError on every switch (after text is applied). | `language.js` | OPEN |
-| 3 | `initLocation` defined twice; beacon path uses undefined `url`; flush every 1 s (comment says 5 min); `no-cors` send clears queue regardless of outcome. | `log-worker.js` | OPEN |
-| 4 | Root-absolute `/pwa-installation.js` breaks under a sub-path host. | `retail-calculator/retail-calculator.html` | OPEN |
-| 5 | Per-transaction delete filters on `entry.time` (field doesn't exist) → delete does nothing; function defined twice. | `sales-report.js` `deleteTransaction` | OPEN |
-| 6 | `downloadPdf` defined twice (stub overridden by real impl); stub `downloadCsv` only logs. | `retail-calculator-script.js` | OPEN |
-| 7 | `retail-calc-lang.js` never loaded; its keys already live in `lang.js`. | `retail-calculator/` | OPEN |
+| 1 | Missing comma in `urlsToCache` → SW syntax error, offline/PWA install broken; `lang.js`/`language.js` not precached. | `service-worker.js` | FIXED 2026-10-30 (cache v5) |
+| 2 | `switchLang` queried non-existent `#btnLangEn/#btnLangBn`; `updateWhatsAppText` threw on calculator page (no `.btn-whatsapp`). | `language.js` | FIXED 2026-10-30 |
+| 3 | Duplicate `initLocation`; beacon used undefined `url`; 1 s flush; queue cleared even on failure. Now: single `TRACKING_URL`, 5 min flush, queue trimmed only after a successful send. Server-side errors still undetectable (`no-cors`). | `log-worker.js` | FIXED 2026-10-30 |
+| 4 | Root-absolute `/pwa-installation.js`. | `retail-calculator/retail-calculator.html` | FIXED 2026-10-30 |
+| 5 | Per-transaction delete filtered on non-existent `entry.time`; defined twice. | `sales-report.js` `deleteTransaction` | FIXED 2026-10-30 |
+| 6 | Duplicate `downloadPdf` stub removed. `downloadCsv` is still an unused stub that only logs. | `retail-calculator-script.js` | PARTIAL |
+| 7 | Orphan `retail-calc-lang.js` (outdated copy of `lang.js` keys) deleted. | `retail-calculator/` | FIXED 2026-10-30 |
 
 ## Data inconsistencies
 - Daily report groups by `recordTimestamp` date, but transaction modal and `deleteEntireDate` filter by `saleTimestamp` date. Back-dated entries added via modal can appear under a different day than expected.

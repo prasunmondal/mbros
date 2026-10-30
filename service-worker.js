@@ -1,4 +1,4 @@
-const CACHE_NAME = "mb-poultry-cache-v4";
+const CACHE_NAME = "mb-poultry-cache-v5";
 const urlsToCache = [
   "./",
   "./index.html",
@@ -8,6 +8,8 @@ const urlsToCache = [
   "./log-worker.js",
   "./local-name-storage.js",
   "./header-style.css",
+  "./lang.js",
+  "./language.js",
   "./service-worker.js",
 
   "./retail-calculator/retail-calculator.html",
@@ -20,7 +22,7 @@ const urlsToCache = [
   "./images/payment-qr.jpeg",
   "./images/icon-192.jpg",
   "./images/icon-512.jpg",
-  "./images/mb-icon.png"
+  "./images/mb-icon.png",
   "./images/right-icon.png"
 ];
 
