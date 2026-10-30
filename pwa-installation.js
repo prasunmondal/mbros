@@ -67,6 +67,20 @@ window.addEventListener("appinstalled", () => {
 });
 
 // ------------------------------
+// Reload once when an updated service worker takes over,
+// so the page never runs a mix of old and new files.
+// Skipped on the very first install (nothing stale to replace).
+// ------------------------------
+if ("serviceWorker" in navigator && navigator.serviceWorker.controller) {
+    let reloading = false;
+    navigator.serviceWorker.addEventListener("controllerchange", () => {
+        if (reloading) return;
+        reloading = true;
+        window.location.reload();
+    });
+}
+
+// ------------------------------
 // Initialize on page load
 // ------------------------------
 window.addEventListener("DOMContentLoaded", () => {

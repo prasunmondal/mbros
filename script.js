@@ -238,9 +238,3 @@ function sendOccasionBooking() {
     const url = `https://wa.me/${whatsappNumber}?text=${encodeURIComponent(text)}`;
     window.open(url, "_blank");
 }
-
-if ("serviceWorker" in navigator) {
- navigator.serviceWorker.addEventListener("controllerchange", () => {
-   window.location.reload();
- });
-}
