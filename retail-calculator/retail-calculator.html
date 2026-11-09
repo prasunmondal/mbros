@@ -1,0 +1,249 @@
+<!DOCTYPE html>
+<html lang="bn">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Retail Calculator | Mondal Brothers</title>
+    <meta name="description" content="Free chicken rate calculator for shops: convert kg and amount, keep a daily sales log and download PDF reports." />
+    <meta name="theme-color" content="#f8b400" />
+
+    <link rel="icon" href="../images/mb-icon.png" />
+    <link rel="manifest" href="../manifest.json" />
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&family=Hind+Siliguri:wght@400;500;600;700&display=swap" rel="stylesheet" />
+    <link rel="stylesheet"
+          href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
+          crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="../style.css" />
+    <link rel="stylesheet" href="retail-calculator.css" />
+</head>
+
+<body class="rc-page">
+
+<span id="copyToast" class="toast" role="status" aria-live="polite"></span>
+
+<!-- ================= TOP BAR ================= -->
+<header class="topbar">
+    <div class="container topbar-inner">
+        <div class="brand">
+            <button type="button" class="icon-btn icon-btn-plain" onclick="goHome()" aria-label="Back to home">
+                <i class="fa-solid fa-arrow-left"></i>
+            </button>
+            <span class="brand-text">
+                <span class="brand-name" data-translate="rc_title"></span>
+                <span class="brand-tag" data-translate="rc_subtitle"></span>
+            </span>
+        </div>
+
+        <div class="topbar-actions">
+            <div id="langSwitcher" class="lang-switch" role="group" aria-label="Language">
+                <button type="button" class="lang-opt" onclick="switchLang('en')" data-lang="en">EN</button>
+                <button type="button" class="lang-opt" onclick="switchLang('bn')" data-lang="bn">বাং</button>
+            </div>
+            <button type="button" class="icon-btn" onclick="openSettings()" aria-label="Set rates">
+                <i class="fa-solid fa-gear"></i>
+            </button>
+        </div>
+    </div>
+</header>
+
+<main class="container rc-main">
+
+    <!-- ================= SHOP ================= -->
+    <section class="shop-card">
+        <img src="../images/mb-icon.png" alt="" class="brand-logo" width="44" height="44" />
+        <div class="shop-text">
+            <textarea id="shopName"
+                      class="shop-input"
+                      rows="1"
+                      data-translate-placeholder="ask_shop_name"
+                      oninput="autoExpand(this); saveShopName();"></textarea>
+            <p class="served-text" data-translate="powered_by"></p>
+        </div>
+    </section>
+
+    <!-- ================= PRODUCT TYPE ================= -->
+    <section>
+        <h2 class="rc-label" data-translate="choose_type"></h2>
+        <div class="grid-buttons">
+            <button type="button" class="choice-btn broiler_live" data-type="broiler_live" onclick="setRate('broiler_live')">
+                <span class="line1" data-translate="broiler"></span>
+                <span class="line2" data-translate="live"></span>
+                <span class="tile-rate"></span>
+            </button>
+            <button type="button" class="choice-btn broiler_cut" data-type="broiler_cut" onclick="setRate('broiler_cut')">
+                <span class="line1" data-translate="broiler"></span>
+                <span class="line2" data-translate="cut"></span>
+                <span class="tile-rate"></span>
+            </button>
+            <button type="button" class="choice-btn culbird_live" data-type="culbird_live" onclick="setRate('culbird_live')">
+                <span class="line1" data-translate="culbird"></span>
+                <span class="line2" data-translate="live"></span>
+                <span class="tile-rate"></span>
+            </button>
+            <button type="button" class="choice-btn culbird_cut" data-type="culbird_cut" onclick="setRate('culbird_cut')">
+                <span class="line1" data-translate="culbird"></span>
+                <span class="line2" data-translate="cut"></span>
+                <span class="tile-rate"></span>
+            </button>
+        </div>
+
+        <div id="noRateMessage" class="card empty-state" style="display:none;">
+            <i class="fa-solid fa-sliders"></i>
+            <p data-translate="set_rates_hint"></p>
+            <button type="button" class="btn btn-primary" onclick="openSettings()">
+                <i class="fa-solid fa-gear"></i><span data-translate="open_settings"></span>
+            </button>
+        </div>
+    </section>
+
+    <!-- ================= CALCULATOR ================= -->
+    <section class="card calc-card">
+        <div class="rate-display">
+            <div>
+                <div class="rc-label" data-translate="selection"></div>
+                <div id="selectedTypeLabel" class="selected-type" data-translate="none"></div>
+            </div>
+            <label class="rate-box">
+                <span class="rc-label" data-translate="rate_per_kg"></span>
+                <input id="rate"
+                       class="rate-input"
+                       type="number"
+                       inputmode="decimal"
+                       data-translate-placeholder="rate_ph"
+                       oninput="autoCalc('rate')" />
+            </label>
+        </div>
+
+        <div class="calc-fields">
+            <div class="input-wrap">
+                <input id="kg"
+                       class="calc-field has-suffix"
+                       type="number"
+                       inputmode="decimal"
+                       data-translate-placeholder="kg_ph"
+                       oninput="autoCalc('kg')" />
+                <span class="suffix">kg</span>
+            </div>
+            <div class="input-wrap">
+                <span class="prefix">₹</span>
+                <input id="amount"
+                       class="calc-field has-prefix"
+                       type="number"
+                       inputmode="decimal"
+                       data-translate-placeholder="amount_ph"
+                       oninput="autoCalc('amount')" />
+            </div>
+        </div>
+
+        <div class="calc-actions">
+            <button type="button" class="btn btn-outline" onclick="clearKgAmount()">
+                <i class="fa-solid fa-xmark"></i><span data-translate="clear"></span>
+            </button>
+            <button type="button" class="btn btn-whatsapp" onclick="saveAndClearKgAmount()">
+                <i class="fa-solid fa-check"></i><span data-translate="save_sale"></span>
+            </button>
+        </div>
+    </section>
+
+    <!-- ================= SALES REPORT ================= -->
+    <section>
+        <button type="button" id="reportToggleBtn" class="btn btn-dark btn-block"
+                onclick="toggleReport()" data-translate="view_sales_report"></button>
+        <div id="reportBox"></div>
+    </section>
+
+    <!-- ================= DOWNLOAD ================= -->
+    <section class="card">
+        <h2 class="card-title"><i class="fa-solid fa-file-arrow-down"></i><span data-translate="download_reports"></span></h2>
+        <div class="calc-actions">
+            <button type="button" class="btn btn-outline" onclick="downloadPdf('full')">
+                <i class="fa-regular fa-file-pdf"></i><span data-translate="full_report"></span>
+            </button>
+            <button type="button" class="btn btn-outline" onclick="downloadPdf('daywise')">
+                <i class="fa-regular fa-file-pdf"></i><span data-translate="daily_summary"></span>
+            </button>
+        </div>
+    </section>
+
+</main>
+
+<!-- ================= SETTINGS MODAL ================= -->
+<div id="settingsModal" class="modal" role="dialog" aria-modal="true" aria-labelledby="settingsTitle">
+    <div class="modal-content">
+        <div class="modal-head">
+            <h2 id="settingsTitle" data-translate="set_rates_title"></h2>
+            <button type="button" class="close-btn" onclick="closeSettings()" aria-label="Close"><i class="fa-solid fa-xmark"></i></button>
+        </div>
+
+        <label class="rate-row">
+            <span data-translate="broiler_live"></span>
+            <input type="number" inputmode="decimal" id="rate_broiler_live" />
+            <button type="button" class="clear-rate-btn" onclick="clearField('rate_broiler_live')" aria-label="Clear"><i class="fa-solid fa-xmark"></i></button>
+        </label>
+        <label class="rate-row">
+            <span data-translate="broiler_cut"></span>
+            <input type="number" inputmode="decimal" id="rate_broiler_cut" />
+            <button type="button" class="clear-rate-btn" onclick="clearField('rate_broiler_cut')" aria-label="Clear"><i class="fa-solid fa-xmark"></i></button>
+        </label>
+        <label class="rate-row">
+            <span data-translate="culbird_live"></span>
+            <input type="number" inputmode="decimal" id="rate_culbird_live" />
+            <button type="button" class="clear-rate-btn" onclick="clearField('rate_culbird_live')" aria-label="Clear"><i class="fa-solid fa-xmark"></i></button>
+        </label>
+        <label class="rate-row">
+            <span data-translate="culbird_cut"></span>
+            <input type="number" inputmode="decimal" id="rate_culbird_cut" />
+            <button type="button" class="clear-rate-btn" onclick="clearField('rate_culbird_cut')" aria-label="Clear"><i class="fa-solid fa-xmark"></i></button>
+        </label>
+
+        <div class="calc-actions">
+            <button type="button" class="btn btn-outline" onclick="closeSettings()" data-translate="close"></button>
+            <button type="button" class="btn btn-primary" onclick="saveSettings()" data-translate="save"></button>
+        </div>
+    </div>
+</div>
+
+<!-- ================= TRANSACTIONS MODAL ================= -->
+<div id="transactionModal" class="modal" role="dialog" aria-modal="true" aria-labelledby="modalTitle">
+    <div class="modal-content">
+        <div class="modal-head">
+            <h2 id="modalTitle"></h2>
+            <button type="button" class="close-btn" onclick="closeModal()" aria-label="Close"><i class="fa-solid fa-xmark"></i></button>
+        </div>
+
+        <div id="transactionList"></div>
+
+        <h3 class="rc-label add-title" data-translate="add_transaction_title"></h3>
+        <div class="add-row">
+            <input type="number" inputmode="decimal" id="newKgInput" data-translate-placeholder="modal_kg_label" />
+            <input type="number" inputmode="decimal" id="newRateInput" data-translate-placeholder="modal_rate_label" />
+            <button type="button" class="btn btn-primary" onclick="addTransaction()" data-translate="add"></button>
+        </div>
+    </div>
+</div>
+
+<footer class="footer">
+    <div class="container footer-inner">
+        <div class="brand">
+            <img src="../images/mb-icon.png" alt="" class="brand-logo" width="32" height="32" />
+            <span class="brand-name">Mondal Brothers</span>
+        </div>
+        <p data-translate="rc_footer"></p>
+    </div>
+</footer>
+
+<script src="../local-name-storage.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+<script src="retail-calculator-script.js"></script>
+<script src="../log-worker.js"></script>
+<script src="../pwa-installation.js"></script>
+<script src="sales-report.js"></script>
+
+<script src="../lang.js"></script>
+<script src="../language.js"></script>
+
+</body>
+</html>

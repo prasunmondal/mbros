@@ -1,0 +1,379 @@
+<!DOCTYPE html>
+<html lang="bn">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Mondal Brothers | Fresh Chicken Delivery for Shops &amp; Hotels</title>
+    <meta name="description" content="Mondal Brothers delivers fresh farm chicken to shops and hotels every day. Premium quality, fair prices, on-time delivery and computerised accounting with daily SMS." />
+    <meta name="theme-color" content="#f8b400" />
+
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content="Mondal Brothers | Fresh Chicken Delivery" />
+    <meta property="og:description" content="Fresh farm chicken delivered daily to shops and hotels. Order on WhatsApp." />
+    <meta property="og:image" content="images/icon-512.jpg" />
+
+    <link rel="icon" href="images/mb-icon.png" />
+    <link rel="apple-touch-icon" href="images/icon-192.jpg" />
+    <link rel="manifest" href="manifest.json" />
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&family=Hind+Siliguri:wght@400;500;600;700&display=swap" rel="stylesheet" />
+    <link rel="stylesheet"
+          href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
+          crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="style.css" />
+
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "LocalBusiness",
+        "name": "Mondal Brothers",
+        "description": "Wholesale fresh chicken delivered daily to shops and hotels.",
+        "telephone": "+91-9734075801",
+        "image": "images/icon-512.jpg",
+        "priceRange": "₹"
+    }
+    </script>
+
+    <script>
+        if ("serviceWorker" in navigator) {
+          navigator.serviceWorker.register("service-worker.js");
+        }
+    </script>
+</head>
+
+<body>
+
+<span id="copyToast" class="toast" role="status" aria-live="polite"></span>
+
+<!-- ================= TOP BAR ================= -->
+<header class="topbar">
+    <div class="container topbar-inner">
+        <a href="#top" class="brand">
+            <img src="images/mb-icon.png" alt="" class="brand-logo" width="40" height="40" />
+            <span class="brand-text">
+                <span class="brand-name">Mondal Brothers</span>
+                <span class="brand-tag" data-translate="brand_tagline"></span>
+            </span>
+        </a>
+
+        <div class="topbar-actions">
+            <div id="langSwitcher" class="lang-switch" role="group" aria-label="Language">
+                <button type="button" class="lang-opt" onclick="switchLang('en')" data-lang="en">EN</button>
+                <button type="button" class="lang-opt" onclick="switchLang('bn')" data-lang="bn">বাং</button>
+            </div>
+            <a href="tel:+919734075801" class="icon-btn" aria-label="Call Mondal Brothers">
+                <i class="fa-solid fa-phone"></i>
+            </a>
+        </div>
+    </div>
+</header>
+
+<main id="top">
+
+    <!-- ================= HERO ================= -->
+    <section class="hero">
+        <div class="container hero-inner">
+            <p class="eyebrow" data-translate="hero_eyebrow"></p>
+            <h1 class="hero-title" data-translate="hero_title"></h1>
+            <p class="hero-sub" data-translate="subtitle"></p>
+
+            <div class="hero-ctas">
+                <a href="#order" class="btn btn-primary" onclick="trackSection('order')">
+                    <i class="fa-brands fa-whatsapp"></i><span data-translate="order_whatsapp"></span>
+                </a>
+                <a href="tel:+919734075801" class="btn btn-ghost">
+                    <i class="fa-solid fa-phone"></i><span data-translate="call_now"></span>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- ================= QUICK ACTIONS ================= -->
+    <section class="container quick" aria-labelledby="quickTitle">
+        <h2 id="quickTitle" class="visually-hidden" data-translate="quick_title"></h2>
+        <div class="quick-grid">
+            <a href="#order" class="quick-tile" onclick="showOrderTab('tomorrow'); trackSection('order')">
+                <span class="tile-icon"><i class="fa-solid fa-cart-shopping"></i></span>
+                <span data-translate="qa_order"></span>
+            </a>
+            <a href="#order" class="quick-tile" onclick="showOrderTab('occasion'); trackSection('prebook')">
+                <span class="tile-icon"><i class="fa-solid fa-calendar-check"></i></span>
+                <span data-translate="qa_prebook"></span>
+            </a>
+            <a href="#pay" class="quick-tile" onclick="trackSection('payment')">
+                <span class="tile-icon"><i class="fa-solid fa-indian-rupee-sign"></i></span>
+                <span data-translate="qa_pay"></span>
+            </a>
+            <a href="retail-calculator/retail-calculator.html" class="quick-tile">
+                <span class="tile-icon"><i class="fa-solid fa-calculator"></i></span>
+                <span data-translate="retail_calculator"></span>
+                <span class="badge" data-translate="new_badge"></span>
+            </a>
+        </div>
+    </section>
+
+    <!-- ================= WHY US ================= -->
+    <section class="section container" aria-labelledby="whyTitle">
+        <h2 id="whyTitle" class="section-title" data-translate="why_title"></h2>
+        <div class="feature-grid">
+            <div class="feature">
+                <i class="fa-solid fa-award"></i>
+                <h3 data-translate="f_quality_t"></h3>
+                <p data-translate="f_quality_d"></p>
+            </div>
+            <div class="feature">
+                <i class="fa-solid fa-scale-balanced"></i>
+                <h3 data-translate="f_price_t"></h3>
+                <p data-translate="f_price_d"></p>
+            </div>
+            <div class="feature">
+                <i class="fa-solid fa-clock"></i>
+                <h3 data-translate="f_delivery_t"></h3>
+                <p data-translate="f_delivery_d"></p>
+            </div>
+            <div class="feature">
+                <i class="fa-solid fa-file-invoice"></i>
+                <h3 data-translate="f_accounts_t"></h3>
+                <p data-translate="f_accounts_d"></p>
+            </div>
+        </div>
+    </section>
+
+    <!-- ================= ORDER ================= -->
+    <section id="order" class="section container" aria-labelledby="orderTitle">
+        <h2 id="orderTitle" class="section-title" data-translate="order_title"></h2>
+        <p class="section-desc" data-translate="order_desc"></p>
+
+        <div class="card">
+            <div class="tabs" role="tablist">
+                <button type="button" class="tab active" role="tab" aria-selected="true"
+                        data-tab="tomorrow" onclick="showOrderTab('tomorrow')" data-translate="tab_tomorrow"></button>
+                <button type="button" class="tab" role="tab" aria-selected="false"
+                        data-tab="occasion" onclick="showOrderTab('occasion')" data-translate="tab_occasion"></button>
+            </div>
+
+            <!-- Order for tomorrow -->
+            <form id="orderForm" class="form tab-panel" data-panel="tomorrow">
+                <input type="text" id="name" autocomplete="name"
+                       data-translate-placeholder="name_ph" required />
+
+                <div class="qty-row">
+                    <input type="number" id="kg" min="0" step="0.1" inputmode="decimal" data-translate-placeholder="order_kg_ph" />
+                    <span class="or-text" data-translate="or"></span>
+                    <input type="number" id="pieces" min="0" step="1" inputmode="numeric" data-translate-placeholder="order_pcs_ph" />
+                </div>
+                <p id="qtyError" class="form-error" data-translate="qty_required" hidden></p>
+
+                <button type="submit" class="btn btn-whatsapp btn-block">
+                    <i class="fa-brands fa-whatsapp"></i><span data-translate="send_whatsapp"></span>
+                </button>
+            </form>
+
+            <!-- Occasion pre-booking -->
+            <form id="occasionForm" class="form tab-panel" data-panel="occasion" hidden>
+                <p class="small-info" data-translate="prebook_desc"></p>
+
+                <input type="text" id="occName" autocomplete="name"
+                       data-translate-placeholder="name_ph" required />
+                <input type="text" id="occTitle" data-translate-placeholder="occ_ph" />
+
+                <label class="field-label" for="occDate" data-translate="occ_date_label"></label>
+                <input type="date" id="occDate" required />
+
+                <input type="number" id="occQty" min="0" inputmode="decimal" data-translate-placeholder="qty_ph" />
+
+                <button type="button" class="btn btn-whatsapp btn-block" onclick="sendOccasionBooking()">
+                    <i class="fa-brands fa-whatsapp"></i><span data-translate="submit_prebook"></span>
+                </button>
+            </form>
+        </div>
+    </section>
+
+    <!-- ================= PAYMENT ================= -->
+    <section id="pay" class="section container" aria-labelledby="payTitle">
+        <h2 id="payTitle" class="section-title" data-translate="payment_opt"></h2>
+        <p class="section-desc" data-translate="choose_payment"></p>
+
+        <div class="pay-grid">
+            <!-- UPI -->
+            <div class="card">
+                <h3 class="card-title"><i class="fa-solid fa-mobile-screen"></i><span data-translate="upi_title"></span></h3>
+
+                <div class="qr-wrapper">
+                    <img src="images/payment-qr.jpeg" alt="UPI payment QR code" class="qr-code" width="200" height="200" />
+                    <p class="muted" data-translate="scan_pay"></p>
+                </div>
+
+                <div class="pay-row">
+                    <input type="number" id="amt" min="1" inputmode="decimal" class="amount-input" data-translate-placeholder="enter_amt" />
+                    <button type="button" class="btn btn-primary" onclick="payViaUpiSmart()">
+                        <span data-translate="pay_now"></span>
+                    </button>
+                </div>
+
+                <div class="details-list">
+                    <p class="details-label" data-translate="primary_upi"></p>
+                    <div class="details-row">
+                        <span class="label" data-translate="name_label"></span>
+                        <span class="value">Prasun Mondal</span>
+                    </div>
+                    <div class="details-row">
+                        <span class="label" data-translate="number_label"></span>
+                        <span id="upiNumber" class="value copyable" tabindex="0">9679004046</span>
+                        <button type="button" class="copy-icon" aria-label="Copy" onclick="copyToClipboard('upiNumber')"><i class="fa-regular fa-copy"></i></button>
+                    </div>
+                    <div class="details-row">
+                        <span class="label" data-translate="upi_id_label"></span>
+                        <span id="upiID" class="value copyable" tabindex="0">prsnmondal@ybl</span>
+                        <button type="button" class="copy-icon" aria-label="Copy" onclick="copyToClipboard('upiID')"><i class="fa-regular fa-copy"></i></button>
+                    </div>
+
+                    <p class="details-label" data-translate="alt_upi"></p>
+                    <div class="details-row">
+                        <span class="label" data-translate="name_label"></span>
+                        <span class="value">Mondal Brothers</span>
+                    </div>
+                    <div class="details-row">
+                        <span class="label" data-translate="upi_id_label"></span>
+                        <span id="altUPIID" class="value copyable" tabindex="0">mondalbrothers@upi</span>
+                        <button type="button" class="copy-icon" aria-label="Copy" onclick="copyToClipboard('altUPIID')"><i class="fa-regular fa-copy"></i></button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Bank transfer -->
+            <div class="card">
+                <h3 class="card-title"><i class="fa-solid fa-building-columns"></i><span data-translate="bank_title"></span></h3>
+
+                <div class="details-list">
+                    <div class="details-row">
+                        <span class="label" data-translate="bank_name"></span>
+                        <span id="bankName" class="value">Canara Bank</span>
+                    </div>
+                    <div class="details-row">
+                        <span class="label" data-translate="acc_type"></span>
+                        <span class="value">Current Account</span>
+                    </div>
+                    <div class="details-row">
+                        <span class="label" data-translate="acc_holder"></span>
+                        <span id="accHolder" class="value copyable" tabindex="0">Mondal Brothers</span>
+                        <button type="button" class="copy-icon" aria-label="Copy" onclick="copyToClipboard('accHolder')"><i class="fa-regular fa-copy"></i></button>
+                    </div>
+                    <div class="details-row">
+                        <span class="label" data-translate="acc_no"></span>
+                        <span id="accNo" class="value copyable" tabindex="0">4400201000088</span>
+                        <button type="button" class="copy-icon" aria-label="Copy" onclick="copyToClipboard('accNo')"><i class="fa-regular fa-copy"></i></button>
+                    </div>
+                    <div class="details-row">
+                        <span class="label" data-translate="ifsc"></span>
+                        <span id="ifsc" class="value copyable" tabindex="0">CNRB0000000</span>
+                        <button type="button" class="copy-icon" aria-label="Copy" onclick="copyToClipboard('ifsc')"><i class="fa-regular fa-copy"></i></button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ================= RETAIL CALCULATOR PROMO ================= -->
+    <section class="section container">
+        <div class="promo">
+            <div class="promo-icon"><i class="fa-solid fa-calculator"></i></div>
+            <div class="promo-body">
+                <h2 class="promo-title">
+                    <span data-translate="retail_calculator"></span>
+                    <span class="badge" data-translate="new_badge"></span>
+                </h2>
+                <p data-translate="calc_desc"></p>
+                <a href="retail-calculator/retail-calculator.html" class="btn btn-dark">
+                    <span data-translate="calc_open"></span><i class="fa-solid fa-arrow-right"></i>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- ================= REFER ================= -->
+    <section id="refer" class="section container" aria-labelledby="referTitle">
+        <h2 id="referTitle" class="section-title" data-translate="share_title"></h2>
+        <p class="section-desc" data-translate="share_desc"></p>
+
+        <div class="share-grid">
+            <div class="card share-card">
+                <h3 class="card-title" data-translate="msg_en"></h3>
+                <div class="share-actions">
+                    <button type="button" class="btn btn-whatsapp" onclick="shareOnWhatsAppEnglish()">
+                        <i class="fa-brands fa-whatsapp"></i><span data-translate="share_wa"></span>
+                    </button>
+                    <button type="button" class="btn btn-outline" onclick="shareViaNativeEnglish()">
+                        <i class="fa-solid fa-share-nodes"></i><span data-translate="share_btn"></span>
+                    </button>
+                </div>
+            </div>
+            <div class="card share-card">
+                <h3 class="card-title" data-translate="msg_bn"></h3>
+                <div class="share-actions">
+                    <button type="button" class="btn btn-whatsapp" onclick="shareOnWhatsAppBengali()">
+                        <i class="fa-brands fa-whatsapp"></i><span data-translate="share_wa"></span>
+                    </button>
+                    <button type="button" class="btn btn-outline" onclick="shareViaNativeBengali()">
+                        <i class="fa-solid fa-share-nodes"></i><span data-translate="share_btn"></span>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ================= CONTACT & SIGN-UP ================= -->
+    <section id="contact" class="section container" aria-labelledby="contactTitle">
+        <div class="contact-grid">
+            <div class="card">
+                <h2 id="contactTitle" class="card-title" data-translate="contact_title"></h2>
+                <p class="contact-name">Pranab Mondal</p>
+                <p class="muted">+91 97340 75801</p>
+                <div class="share-actions">
+                    <a href="tel:+919734075801" class="btn btn-primary">
+                        <i class="fa-solid fa-phone"></i><span data-translate="call"></span>
+                    </a>
+                    <a href="https://wa.me/919734075801" target="_blank" rel="noopener" class="btn btn-whatsapp">
+                        <i class="fa-brands fa-whatsapp"></i><span data-translate="whatsapp"></span>
+                    </a>
+                </div>
+            </div>
+
+            <div class="card signup-card">
+                <h2 class="card-title" data-translate="signup_title"></h2>
+                <p data-translate="signup_desc"></p>
+                <a href="https://wa.me/919734075801" target="_blank" rel="noopener" id="signupLink" class="btn btn-dark">
+                    <i class="fa-brands fa-whatsapp"></i><span data-translate="signup"></span>
+                </a>
+            </div>
+        </div>
+    </section>
+
+</main>
+
+<button id="installBtn" class="install-btn" onclick="installPwa()" style="display:none;">
+    <i class="fa-solid fa-download"></i><span data-translate="install_btn"></span>
+</button>
+
+<footer class="footer">
+    <div class="container footer-inner">
+        <div class="brand">
+            <img src="images/mb-icon.png" alt="" class="brand-logo" width="32" height="32" />
+            <span class="brand-name">Mondal Brothers</span>
+        </div>
+        <p data-translate="site_footer"></p>
+    </div>
+</footer>
+
+<script src="script.js"></script>
+<script src="local-name-storage.js"></script>
+<script src="log-worker.js"></script>
+<script src="pwa-installation.js"></script>
+
+<script src="lang.js"></script>
+<script src="language.js"></script>
+
+</body>
+</html>

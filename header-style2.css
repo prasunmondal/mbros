@@ -1,0 +1,26 @@
+.shiny-gold {
+    background: linear-gradient(180deg, #f7c566 0%, #d68910 100%);
+    animation: goldGlow 4s ease-in-out infinite;
+    color: #fff;
+    border-radius: 0 0 14px 14px;
+    font-weight: 600;
+    text-align: center;
+    box-shadow: 0 4px 12px rgba(214, 137, 16, 0.4);
+    position: relative;
+    transition: box-shadow .3s ease;
+}
+
+@keyframes goldGlow {
+    0% {
+        filter: brightness(100%);
+        box-shadow: 0 4px 12px rgba(214, 137, 16, 0.35);
+    }
+    50% {
+        filter: brightness(115%);
+        box-shadow: 0 6px 18px rgba(214, 137, 16, 0.55);
+    }
+    100% {
+        filter: brightness(100%);
+        box-shadow: 0 4px 12px rgba(214, 137, 16, 0.35);
+    }
+}
