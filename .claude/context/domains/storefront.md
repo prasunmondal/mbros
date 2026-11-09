@@ -12,7 +12,7 @@ Single-page, mobile-first landing page where customers order, pre-book, pay, con
 | Section | Behaviour | Code |
 |---|---|---|
 | Sticky top bar | Logo, EN/বাং switch (`.lang-opt`, `.active`), call icon | `index.html`, `language.js` |
-| Hero | Headline, "Order on WhatsApp" (scrolls to `#order`), call button, trust chips | `index.html` |
+| Hero | Headline, "Order on WhatsApp" (scrolls to `#order`), call button | `index.html` |
 | Quick actions | 4 tiles: order, pre-book (opens occasion tab), pay, retail calculator | `index.html` |
 | Why us | 4 feature cards. Copy limited to claims the business already makes (quality, fair price, on-time, computerised accounts) | `index.html` |
 | `#order` | Tabbed card (`showOrderTab('tomorrow'|'occasion')`). Tomorrow: `#orderForm` requires kg or pieces (`#qtyError`), sends "Hello, I am {name}. I want to order {qty}." to `wa.me/{whatsappNumber}`. Occasion: `sendOccasionBooking()`; `#occDate` min = tomorrow | `script.js` |

@@ -1,6 +1,6 @@
 // Bump CACHE_NAME when the file list changes. Content updates no longer need a bump:
 // requests go network-first, so the cache is only an offline fallback.
-const CACHE_NAME = "mb-poultry-cache-v8";
+const CACHE_NAME = "mb-poultry-cache-v9";
 const urlsToCache = [
   "./",
   "./index.html",

@@ -62,7 +62,7 @@
   padding: 0;
   background: transparent;
   font: inherit;
-  font-size: 1.15rem;
+  font-size: 1.05rem;
   font-weight: 700;
   line-height: 1.3;
   color: var(--ink);
@@ -145,7 +145,7 @@
 }
 
 .selected-type {
-  font-size: 1.15rem;
+  font-size: 1.05rem;
   font-weight: 700;
 }
 
@@ -172,12 +172,12 @@ input.rate-input {
 
 input.calc-field {
   min-height: 64px;
-  font-size: 1.6rem;
+  font-size: 1.4rem;
   font-weight: 700;
   font-variant-numeric: tabular-nums;
 }
 
-input.calc-field::placeholder { font-size: 1.1rem; font-weight: 500; }
+input.calc-field::placeholder { font-size: 1rem; font-weight: 500; }
 
 .calc-field.has-suffix { padding-right: 56px; }
 .calc-field.has-prefix { padding-left: 44px; }
@@ -187,7 +187,7 @@ input.calc-field::placeholder { font-size: 1.1rem; font-weight: 500; }
   position: absolute;
   top: 50%;
   transform: translateY(-50%);
-  font-size: 1.1rem;
+  font-size: 1rem;
   font-weight: 600;
   color: var(--ink-soft);
   pointer-events: none;
@@ -292,7 +292,7 @@ input.calc-field::placeholder { font-size: 1.1rem; font-weight: 500; }
   margin-bottom: 16px;
 }
 
-.modal-head h2 { font-size: 1.15rem; font-weight: 700; }
+.modal-head h2 { font-size: 1.05rem; font-weight: 700; }
 
 .close-btn,
 .clear-rate-btn {

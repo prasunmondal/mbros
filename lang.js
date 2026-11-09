@@ -12,12 +12,9 @@ const translations = {
         // Hero
         hero_eyebrow: "Wholesale fresh chicken · Daily delivery",
         hero_title: "Fresh farm chicken, delivered to your shop every day",
-        subtitle: "Exclusive for shops & hotels. Premium quality, fair prices and modern accounting with daily SMS.",
+        subtitle: "For shops & hotels only. Digital accounts with SMS alerts for every transaction.",
         order_whatsapp: "Order on WhatsApp",
         call_now: "Call Now",
-        trust_shops: "Shops & hotels only",
-        trust_daily: "Daily delivery",
-        trust_sms: "Daily SMS statements",
 
         // Quick actions
         quick_title: "What would you like to do?",
@@ -30,17 +27,17 @@ const translations = {
         // Why us
         why_title: "Why shops choose us",
         f_quality_t: "Premium quality",
-        f_quality_d: "Fresh farm chicken your customers can trust.",
+        f_quality_d: "Fresh chicken your customers trust.",
         f_price_t: "Fair prices",
-        f_price_d: "Honest daily rates for every shop.",
+        f_price_d: "Honest daily rates.",
         f_delivery_t: "On-time delivery",
-        f_delivery_d: "Delivered every day, so your counter is ready on time.",
+        f_delivery_d: "Every day, on time.",
         f_accounts_t: "Computerised accounts",
-        f_accounts_d: "Transaction SMS and statements, always at your fingertips.",
+        f_accounts_d: "Transaction SMS and statements.",
 
         // Order
         order_title: "Place an order",
-        order_desc: "Fill in the details and send them to us on WhatsApp. We will confirm your order.",
+        order_desc: "Send your order on WhatsApp. We'll confirm it.",
         tab_tomorrow: "For tomorrow",
         tab_occasion: "For an occasion",
         name_ph: "Your name",
@@ -49,7 +46,7 @@ const translations = {
         order_pcs_ph: "Pieces",
         send_whatsapp: "Send order on WhatsApp",
         qty_required: "Please enter kg or pieces.",
-        prebook_desc: "Planning a wedding, festival or event? Book in advance and we will confirm availability.",
+        prebook_desc: "Book ahead for weddings and events. We'll confirm availability.",
         occ_ph: "Occasion (e.g. wedding)",
         occ_date_label: "Date",
         qty_ph: "Quantity (kg)",
@@ -57,9 +54,9 @@ const translations = {
 
         // Payment
         payment_opt: "Payment options",
-        choose_payment: "Pay by UPI or bank transfer. Tap any detail to copy it.",
+        choose_payment: "UPI or bank transfer. Tap a detail to copy it.",
         upi_title: "UPI payment",
-        scan_pay: "Scan the QR code with any UPI app",
+        scan_pay: "Scan with any UPI app",
         enter_amt: "Amount (₹, optional)",
         pay_now: "Pay with UPI app",
         primary_upi: "Primary UPI",
@@ -75,12 +72,12 @@ const translations = {
         ifsc: "IFSC",
 
         // Retail calculator promo
-        calc_desc: "A free tool for your shop counter: set your rates once, convert kg and amount instantly, keep a daily sales log and download PDF reports.",
+        calc_desc: "Free for your counter: kg and amount conversion, a daily sales log and PDF reports.",
         calc_open: "Open calculator",
 
         // Refer
         share_title: "Refer a shop",
-        share_desc: "Know a shop that needs a reliable supplier? Share our details in English or Bengali.",
+        share_desc: "Know a shop that needs a supplier? Share our details.",
         msg_en: "English message",
         msg_bn: "Bengali message",
         share_wa: "WhatsApp",
@@ -91,11 +88,11 @@ const translations = {
         call: "Call",
         whatsapp: "WhatsApp",
         signup_title: "New shop?",
-        signup_desc: "Start receiving fresh chicken every day. Message us to register your shop.",
+        signup_desc: "Message us to register your shop.",
         signup: "Register on WhatsApp",
 
         install_btn: "Install app",
-        site_footer: "© 2026 Mondal Brothers. Fresh chicken delivery for shops and hotels."
+        site_footer: "© 2026 Mondal Brothers."
     },
 
 
@@ -105,14 +102,11 @@ const translations = {
         brand_tagline: "চিকেন ডেলিভারি সার্ভিস",
 
         // Hero
-        hero_eyebrow: "পাইকারি ফ্রেশ চিকেন · প্রতিদিন ডেলিভারি",
-        hero_title: "খামারের টাটকা চিকেন, প্রতিদিন আপনার দোকানে",
-        subtitle: "শুধু দোকান ও হোটেলের জন্য। প্রিমিয়াম কোয়ালিটি, ন্যায্য দাম এবং প্রতিদিন SMS সহ আধুনিক হিসাব।",
+        hero_eyebrow: "পাইকারি ফ্রেশ মুরগি · রোজ ডেলিভারি",
+        hero_title: "প্রতিদিন বাছাই করা সেরা মুরগি, সরাসরি আপনার দোকানে",
+        subtitle: "শুধু দোকান ও হোটেলের জন্য। ডিজিটাল হিসাব, প্রতিটি লেনদেনে SMS অ্যালার্ট।",
         order_whatsapp: "WhatsApp-এ অর্ডার করুন",
         call_now: "এখনই কল করুন",
-        trust_shops: "শুধু দোকান ও হোটেল",
-        trust_daily: "প্রতিদিন ডেলিভারি",
-        trust_sms: "প্রতিদিন SMS স্টেটমেন্ট",
 
         // Quick actions
         quick_title: "আপনি কী করতে চান?",
@@ -125,17 +119,17 @@ const translations = {
         // Why us
         why_title: "দোকানদাররা কেন আমাদের বেছে নেন",
         f_quality_t: "প্রিমিয়াম কোয়ালিটি",
-        f_quality_d: "খামারের টাটকা চিকেন, যার উপর আপনার ক্রেতারা ভরসা করতে পারেন।",
+        f_quality_d: "টাটকা চিকেন, ক্রেতাদের ভরসা।",
         f_price_t: "ন্যায্য দাম",
-        f_price_d: "প্রতিটি দোকানের জন্য সৎ দৈনিক রেট।",
+        f_price_d: "সৎ দৈনিক রেট।",
         f_delivery_t: "সময়মতো ডেলিভারি",
-        f_delivery_d: "প্রতিদিন ডেলিভারি, যাতে আপনার দোকান সময়মতো তৈরি থাকে।",
+        f_delivery_d: "প্রতিদিন, ঠিক সময়ে।",
         f_accounts_t: "কম্পিউটারাইজড হিসাব",
-        f_accounts_d: "লেনদেনের SMS আর স্টেটমেন্ট, সবকিছু আপনার হাতের মুঠোয়।",
+        f_accounts_d: "লেনদেনের SMS আর স্টেটমেন্ট।",
 
         // Order
         order_title: "অর্ডার দিন",
-        order_desc: "বিবরণ লিখে WhatsApp-এ পাঠান। আমরা আপনার অর্ডার নিশ্চিত করব।",
+        order_desc: "WhatsApp-এ অর্ডার পাঠান, আমরা নিশ্চিত করব।",
         tab_tomorrow: "আগামীকালের জন্য",
         tab_occasion: "অনুষ্ঠানের জন্য",
         name_ph: "আপনার নাম",
@@ -144,7 +138,7 @@ const translations = {
         order_pcs_ph: "পিস",
         send_whatsapp: "WhatsApp-এ অর্ডার পাঠান",
         qty_required: "কেজি অথবা পিস লিখুন।",
-        prebook_desc: "বিয়ে, উৎসব বা অনুষ্ঠানের পরিকল্পনা করছেন? আগে থেকে বুক করুন, আমরা জানিয়ে দেব।",
+        prebook_desc: "বিয়ে বা অনুষ্ঠানের জন্য আগে বুক করুন, আমরা জানিয়ে দেব।",
         occ_ph: "অনুষ্ঠান (যেমন বিয়ে)",
         occ_date_label: "তারিখ",
         qty_ph: "পরিমাণ (কেজি)",
@@ -152,9 +146,9 @@ const translations = {
 
         // Payment
         payment_opt: "পেমেন্ট অপশন",
-        choose_payment: "UPI বা ব্যাঙ্ক ট্রান্সফারে পেমেন্ট করুন। কপি করতে যেকোনো তথ্যে ট্যাপ করুন।",
+        choose_payment: "UPI বা ব্যাঙ্ক ট্রান্সফার। কপি করতে তথ্যে ট্যাপ করুন।",
         upi_title: "UPI পেমেন্ট",
-        scan_pay: "যেকোনো UPI অ্যাপ দিয়ে QR কোড স্ক্যান করুন",
+        scan_pay: "যেকোনো UPI অ্যাপে স্ক্যান করুন",
         enter_amt: "টাকার পরিমাণ (₹, ঐচ্ছিক)",
         pay_now: "UPI অ্যাপে পেমেন্ট করুন",
         primary_upi: "প্রধান UPI",
@@ -170,12 +164,12 @@ const translations = {
         ifsc: "IFSC",
 
         // Retail calculator promo
-        calc_desc: "আপনার দোকানের জন্য বিনামূল্যে টুল: একবার রেট সেট করুন, কেজি আর টাকার হিসাব সঙ্গে সঙ্গে, প্রতিদিনের বিক্রির খাতা আর PDF রিপোর্ট।",
+        calc_desc: "দোকানের জন্য বিনামূল্যে: কেজি ও টাকার হিসাব, দৈনিক বিক্রির খাতা আর PDF রিপোর্ট।",
         calc_open: "ক্যালকুলেটর খুলুন",
 
         // Refer
         share_title: "দোকান রেফার করুন",
-        share_desc: "কোনো দোকানের ভরসাযোগ্য সাপ্লায়ার দরকার? ইংরেজি বা বাংলায় আমাদের তথ্য শেয়ার করুন।",
+        share_desc: "কোনো দোকানের সাপ্লায়ার দরকার? আমাদের তথ্য শেয়ার করুন।",
         msg_en: "ইংরেজি মেসেজ",
         msg_bn: "বাংলা মেসেজ",
         share_wa: "WhatsApp",
@@ -186,11 +180,11 @@ const translations = {
         call: "কল",
         whatsapp: "WhatsApp",
         signup_title: "নতুন দোকান?",
-        signup_desc: "প্রতিদিন টাটকা চিকেন পেতে শুরু করুন। দোকান রেজিস্টার করতে আমাদের মেসেজ করুন।",
+        signup_desc: "দোকান রেজিস্টার করতে আমাদের মেসেজ করুন।",
         signup: "WhatsApp-এ রেজিস্টার করুন",
 
         install_btn: "অ্যাপ ইনস্টল করুন",
-        site_footer: "© ২০২৬ মন্ডল ব্রাদার্স। দোকান ও হোটেলের জন্য ফ্রেশ চিকেন ডেলিভারি।"
+        site_footer: "© ২০২৬ মন্ডল ব্রাদার্স।"
     }
 
 
